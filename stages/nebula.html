@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>星云轨道舞台 - 年会抽奖</title>
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/stages.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel">
+        <h1 class="title">名单导入</h1>
+        <p class="subtitle">支持 XLSX / CSV，本地保存，无需联网。</p>
+        <div class="field">
+          <label>年会标题（大屏显示）</label>
+          <input type="text" data-field="title" placeholder="年度抽奖夜" />
+        </div>
+        <div class="field">
+          <label>导入文件（.xlsx / .csv）</label>
+          <input type="file" data-field="file" accept=".xlsx,.xls,.csv" />
+        </div>
+        <div class="field">
+          <label>或直接粘贴（每行：姓名,工号）</label>
+          <textarea data-field="text" placeholder="张三,1001\n李四,1002"></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="secondary" data-action="import">载入名单</button>
+          <button class="danger" data-action="clear">清空数据</button>
+        </div>
+        <div class="footer-note">数据默认保存在浏览器本地 LocalStorage。</div>
+      </aside>
+      <main class="stage-panel">
+        <div class="panel stage-header">
+          <div>
+            <p class="subtitle">舞台 D：星云轨道（自定义炫彩风格）</p>
+            <h2 class="stage-title" data-ui="stage-title">年度抽奖夜</h2>
+          </div>
+          <div class="badge">大屏模式</div>
+        </div>
+        <section class="panel">
+          <h3 class="title">抽奖控制</h3>
+          <div class="field">
+            <label>奖项名称</label>
+            <input type="text" data-field="prize" placeholder="一等奖" />
+          </div>
+          <div class="field">
+            <label>抽取人数</label>
+            <input type="number" min="1" data-field="count" value="1" />
+          </div>
+          <div class="field">
+            <label><input type="checkbox" data-field="repeat" /> 可重复中奖</label>
+          </div>
+          <div class="btn-row">
+            <button data-action="start">开始抽奖（Space）</button>
+            <button class="warning" data-action="undo">撤销</button>
+            <button class="secondary" data-action="export">导出结果</button>
+            <a class="secondary" href="../index.html" style="text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);">返回主页</a>
+          </div>
+        </section>
+        <section class="panel">
+          <div data-ui="summary" class="btn-row"></div>
+          <div class="stage-canvas" data-ui="stage"></div>
+        </section>
+        <section class="panel results-panel">
+          <h3 class="title">中奖结果</h3>
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>奖项</th>
+                <th>姓名</th>
+                <th>工号</th>
+                <th>时间</th>
+              </tr>
+            </thead>
+            <tbody data-ui="results"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="../assets/js/stages/nebula.js"></script>
+    <script type="module" src="../assets/js/app.js"></script>
+  </body>
+</html>
