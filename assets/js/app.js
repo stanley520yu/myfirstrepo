@@ -142,7 +142,7 @@ async function runDraw() {
 
 function handleUndo() {
   const count = Number(selectors.drawCount.value) || 1;
-  undoLastDraw(runtime, count);
+  undoLastDraw(runtime, count, selectors.allowRepeat.checked);
   persistState();
   updateSummary();
   renderResults();

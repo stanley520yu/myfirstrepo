@@ -31,10 +31,12 @@ export function drawWinners(state, count, allowRepeat) {
   return winners;
 }
 
-export function undoLastDraw(state, drawCount) {
+export function undoLastDraw(state, drawCount, allowRepeat) {
   if (!state.results.length) return [];
   const removed = state.results.splice(-drawCount, drawCount);
-  const restored = removed.map((entry) => entry.participant);
-  state.pool.push(...restored);
+  if (!allowRepeat) {
+    const restored = removed.map((entry) => entry.participant);
+    state.pool.push(...restored);
+  }
   return removed;
 }
