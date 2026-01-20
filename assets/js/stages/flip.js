@@ -32,7 +32,7 @@ function buildGrid(list) {
   container.appendChild(stage);
 }
 
-export const LotteryStage = {
+const LotteryStage = {
   init(state) {
     buildGrid(state.participants);
   },

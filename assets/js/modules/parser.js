@@ -11,24 +11,25 @@ function findColumnIndex(headers, keywords) {
 
 export function detectColumns(rows) {
   if (!rows.length) {
-    return { nameIndex: 0, idIndex: 1 };
+    return { nameIndex: 0, idIndex: 1, hasHeader: false };
   }
   const headers = rows[0].map(normalizeHeader);
   let nameIndex = findColumnIndex(headers, nameKeywords);
   let idIndex = findColumnIndex(headers, idKeywords);
-  if (nameIndex === -1 && idIndex === -1) {
+  const hasHeader = nameIndex !== -1 || idIndex !== -1;
+  if (!hasHeader) {
     nameIndex = 0;
     idIndex = 1;
   } else {
     if (nameIndex === -1) nameIndex = 0;
     if (idIndex === -1) idIndex = nameIndex === 0 ? 1 : 0;
   }
-  return { nameIndex, idIndex };
+  return { nameIndex, idIndex, hasHeader };
 }
 
 export function rowsToParticipants(rows) {
-  const { nameIndex, idIndex } = detectColumns(rows);
-  const startIndex = rows.length > 1 ? 1 : 0;
+  const { nameIndex, idIndex, hasHeader } = detectColumns(rows);
+  const startIndex = hasHeader ? 1 : 0;
   const list = [];
   for (let i = startIndex; i < rows.length; i += 1) {
     const row = rows[i];

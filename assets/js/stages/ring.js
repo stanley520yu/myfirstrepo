@@ -43,7 +43,7 @@ function updateNames(list) {
   buildRing(currentNames);
 }
 
-export const LotteryStage = {
+const LotteryStage = {
   init(state) {
     currentNames = state.participants.map((item) => item.name);
     buildRing(currentNames.length ? currentNames : ["候选"]);

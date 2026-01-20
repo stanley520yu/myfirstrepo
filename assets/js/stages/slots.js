@@ -31,7 +31,7 @@ function buildSlots(list) {
   container.appendChild(stage);
 }
 
-export const LotteryStage = {
+const LotteryStage = {
   init(state) {
     buildSlots(state.participants);
   },

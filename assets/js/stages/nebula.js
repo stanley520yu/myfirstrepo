@@ -25,7 +25,7 @@ function buildOrbit(list) {
   container.appendChild(stage);
 }
 
-export const LotteryStage = {
+const LotteryStage = {
   init(state) {
     buildOrbit(state.participants);
   },
