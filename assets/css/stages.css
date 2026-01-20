@@ -8,10 +8,11 @@
 
 .ring-track {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 320px;
+  height: 320px;
   transform-style: preserve-3d;
-  animation: ring-spin 16s linear infinite;
+  animation: ring-spin 18s linear infinite;
+  transform: translateZ(120px);
 }
 
 .ring-track.paused {
@@ -20,8 +21,8 @@
 
 .ring-card {
   position: absolute;
-  width: 160px;
-  height: 90px;
+  width: 130px;
+  height: 70px;
   border-radius: 12px;
   background: rgba(94, 243, 255, 0.2);
   border: 1px solid rgba(94, 243, 255, 0.4);

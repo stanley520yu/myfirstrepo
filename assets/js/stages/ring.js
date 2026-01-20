@@ -9,12 +9,13 @@ function buildRing(names) {
   stage.className = "ring-stage";
   track = document.createElement("div");
   track.className = "ring-track";
-  const total = Math.max(names.length, 8);
-  const radius = 180;
+  const total = Math.min(Math.max(names.length, 8), 16);
+  const radius = 140;
+  const sample = names.length ? names.slice(0, total) : [];
   for (let i = 0; i < total; i += 1) {
     const card = document.createElement("div");
     card.className = "ring-card";
-    const name = names[i % names.length] || `候选${i + 1}`;
+    const name = sample[i % sample.length] || `候选${i + 1}`;
     card.textContent = name;
     const angle = (360 / total) * i;
     card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
